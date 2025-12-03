@@ -10,15 +10,23 @@
     <title>Stlite App</title>
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@stlite/browser@0.85.1/build/stlite.css"
+      href="https://cdn.jsdelivr.net/npm/@stlite/browser@0.83.0/build/stlite.css"
     />
-    <script
-      type="module"
-      src="https://cdn.jsdelivr.net/npm/@stlite/browser@0.85.1/build/stlite.js"
-    ></script>
   </head>
   <body>
-    <streamlit-app src="/streamlit-pages/index.py">
-    </streamlit-app>
+    <div id="root"></div>
+    <script type="module">
+      import { mount } from "https://cdn.jsdelivr.net/npm/@stlite/browser@0.83.0/build/stlite.js";
+      mount(
+        {
+          entrypoint: "index.py",
+          files: {
+            "index.py": {
+              url: "streamlit-pages/index.py",
+            },
+        },
+        document.getElementById("root"),
+      );
+    </script>
   </body>
 </html>
