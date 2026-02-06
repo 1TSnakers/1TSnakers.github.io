@@ -3,7 +3,10 @@ import requests
 from PIL import Image, ImageDraw
 from io import BytesIO
 
-st.set_page_config(layout="wide")
+st.set_page_config(
+    page_title="Dark Mode App",
+    layout="wide"
+)
 
 username = "1TSnakers"
 
@@ -88,7 +91,6 @@ with main:
         st.image("eyy.jpg", width=350)
 
     st.divider()
-
     st.image("https://komarev.com/ghpvc/?username=" + username)
     st.image(f"https://raw.githubusercontent.com/{username}/{username}/refs/heads/output/snake-dark.svg")
 
@@ -99,4 +101,3 @@ with main:
         st.image(f"https://github-readme-streak-stats-1tsnakers.vercel.app/?user={username}&theme=dark")
     with R:
         st.image(f"https://github-readme-stats-1tsnakers.vercel.app/api/top-langs/?username={username}&layout=compact&theme=dark")
-
