@@ -99,6 +99,4 @@ with main:
         st.image(f"https://github-readme-streak-stats-1tsnakers.vercel.app/?user={username}&theme=dark")
     with R:
         st.image(f"https://github-readme-stats-1tsnakers.vercel.app/api/top-langs/?username={username}&layout=compact&theme=dark")
-    
-    st.divider()
 
