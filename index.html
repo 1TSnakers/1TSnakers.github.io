@@ -20,6 +20,7 @@
     
       mount(
         {
+          requirements: ["requests", "PIL", "io"],
           entrypoint: "app.py",
           files: {
             "app.py": {
@@ -30,11 +31,6 @@
         document.getElementById("root")
       );
     </script>
-    <app-requirements>
-      requests
-      PIL
-      io
-    </app-requirements>
 
   </body>
 </html>
