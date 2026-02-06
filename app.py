@@ -87,6 +87,21 @@ with profile:
     st.markdown("### **" + username + " · he/him**")
     st.text(user_info["bio"])
 
+    st.divider()
+
+    st.markdown(
+        ":green-badge[:material/check: Profecient] :orange-badge[:material/warning: Learning] :red-badge[:material/error: Unknown]"
+    )
+    
+    st.markdown(
+        ":green-badge[:material/check: Python] "
+        ":green-badge[:material/check: GDscript] "
+        ":orange-badge[:material/warning: JS] "
+        ":orange-badge[:material/warning: HTML] "
+        ":red-badge[:material/error: Java]"
+    )
+
+    
 with main:
     col1, col2 = st.columns(2)
     with col1:
