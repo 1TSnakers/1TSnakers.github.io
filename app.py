@@ -2,6 +2,7 @@ import streamlit as st
 import requests
 from PIL import Image, ImageDraw
 from io import BytesIO
+import time
 
 st.set_page_config(
     page_title="1TSnakers Website!",
@@ -73,15 +74,18 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+# Generate cache-busting timestamp
+cache_bust = int(time.time())
 
 main, profile = st.columns(spec=[0.75, 0.25], border=True)
 
 with profile:
-    st.image(circle_crop_from_url(user_info["avatar_url"]))
+    # Add cache-bust to avatar URL
+    avatar_url = user_info["avatar_url"] + f"?v={cache_bust}"
+    st.image(circle_crop_from_url(avatar_url))
     st.markdown("## **" + user_info["name"] + "**")
     st.markdown("### **" + username + " · he/him**")
     st.text(user_info["bio"])
-    
 
 with main:
     col1, col2 = st.columns(2)
@@ -91,13 +95,15 @@ with main:
         st.image("eyy.jpg", width=350)
 
     st.divider()
-    st.image("https://komarev.com/ghpvc/?username=" + username)
-    st.image(f"https://raw.githubusercontent.com/{username}/{username}/refs/heads/output/snake-dark.svg")
+
+    # Add cache-bust to all dynamic images
+    st.image(f"https://komarev.com/ghpvc/?username={username}&v={cache_bust}")
+    st.image(f"https://raw.githubusercontent.com/{username}/{username}/refs/heads/output/snake-dark.svg?v={cache_bust}")
 
     L, R = st.columns([0.4, 0.6])
     
     with L:
-        st.image(f"https://github-readme-stats-1tsnakers.vercel.app/api/?username={username}&layout=compact&theme=dark&show_icons=true")
-        st.image(f"https://github-readme-streak-stats-1tsnakers.vercel.app/?user={username}&theme=dark")
+        st.image(f"https://github-readme-stats-1tsnakers.vercel.app/api/?username={username}&layout=compact&theme=dark&show_icons=true&v={cache_bust}")
+        st.image(f"https://github-readme-streak-stats-1tsnakers.vercel.app/?user={username}&theme=dark&v={cache_bust}")
     with R:
-        st.image(f"https://github-readme-stats-1tsnakers.vercel.app/api/top-langs/?username={username}&layout=compact&theme=dark")
+        st.image(f"https://github-readme-stats-1tsnakers.vercel.app/api/top-langs/?username={username}&layout=compact&theme=dark&v={cache_bust}")
