@@ -4,7 +4,7 @@ from PIL import Image, ImageDraw
 from io import BytesIO
 
 st.set_page_config(
-    page_title="Dark Mode App",
+    page_title="1TSnakers Website!",
     layout="wide"
 )
 
