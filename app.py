@@ -129,7 +129,8 @@ with main:
     st.divider()
     st.header("Cool things I made:")
 
-    pin_container = st.container(horizontal=True)
+    pin_columns = st.columns(3)
     pinned = ["ProgressiveImageLoader", "ollama-for-godot", "1TSnakers.github.io"]
-    for repo in pinned:
-        pin_container.image(f"https://github-readme-stats-1tsnakers.vercel.app/api/pin/?username={username}&repo={repo}&theme={theme}&v={cache_bust}", width=int(1130/3))
+    for repo in range(len(pinned)):
+        with pin_columns[repo % 3]:
+            st.image(f"https://github-readme-stats-1tsnakers.vercel.app/api/pin/?username={username}&repo={pinned[repo]}&theme={theme}&v={cache_bust}", width=int(1130/3))
