@@ -1,8 +1,11 @@
 import streamlit as st
+from streamlit_autorefresh import st_autorefresh
 import requests
 from PIL import Image, ImageDraw
 from io import BytesIO
 import time
+import random
+import json
 
 st.set_page_config(
     page_title="1TSnakers Website!",
@@ -46,6 +49,24 @@ def get_user_info():
     r = requests.get(f"https://api.github.com/users/{username}")
     return r.json()
 
+last_joke = None
+
+def rand_joke():
+    global last_joke
+    with open("jokes.json", "r", encoding="utf-8") as f:
+        jokes = json.load(f)
+    
+    if len(jokes) == 1:
+        return jokes[0]  # only one joke, no choice
+    
+    # Keep picking until it’s different from last_joke
+    joke = random.choice(jokes)
+    while joke == last_joke:
+        joke = random.choice(jokes)
+    
+    last_joke = joke
+    return joke
+
 user_info = get_user_info()
 
 st.markdown(
@@ -83,6 +104,8 @@ with profile:
     # Add cache-bust to avatar URL
     avatar_url = user_info["avatar_url"] + f"?v={cache_bust}"
     st.image(circle_crop_from_url(avatar_url))
+    joke_placeholder = st.empty()
+
     st.markdown("## **" + user_info["name"] + "**")
     st.markdown("### **" + username + " · he/him**")
     st.text(user_info["bio"])
@@ -100,6 +123,10 @@ with profile:
         ":orange-badge[:material/warning: HTML] "
         ":red-badge[:material/error: Java]"
     )
+
+    count = st_autorefresh(interval=10000, limit=None, key="joke_refresh")
+
+    joke_placeholder.caption(rand_joke(), text_alignment="center")
 
 theme = "streamlit"
 
