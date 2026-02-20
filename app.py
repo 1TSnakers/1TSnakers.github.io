@@ -126,7 +126,7 @@ with profile:
 
     count = st_autorefresh(interval=10000, limit=None, key="joke_refresh")
 
-    joke_placeholder.caption(rand_joke(), text_alignment="center")
+    joke_placeholder.caption(rand_joke())
 
 theme = "streamlit"
 
