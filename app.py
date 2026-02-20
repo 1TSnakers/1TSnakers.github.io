@@ -1,11 +1,9 @@
 import streamlit as st
-from streamlit_autorefresh import st_autorefresh
-import requests
+import streamlit.components.v1 as components
 from PIL import Image, ImageDraw
+import requests
 from io import BytesIO
 import time
-import random
-import json
 
 st.set_page_config(
     page_title="1TSnakers Website!",
@@ -15,20 +13,16 @@ st.set_page_config(
 username = "1TSnakers"
 
 def circle_crop_from_url(url, antialias=True):
-    # Download image
     resp = requests.get(url, timeout=10)
     resp.raise_for_status()
-
     img = Image.open(BytesIO(resp.content)).convert("RGBA")
 
-    # Make square (center crop)
     w, h = img.size
     size = min(w, h)
     left = (w - size) // 2
     top = (h - size) // 2
     img = img.crop((left, top, left + size, top + size))
 
-    # Create mask
     if antialias:
         scale = 4
         big = size * scale
@@ -41,7 +35,6 @@ def circle_crop_from_url(url, antialias=True):
         draw = ImageDraw.Draw(mask)
         draw.ellipse((0, 0, size, size), fill=255)
 
-    # Apply mask
     img.putalpha(mask)
     return img
 
@@ -49,85 +42,36 @@ def get_user_info():
     r = requests.get(f"https://api.github.com/users/{username}")
     return r.json()
 
-last_joke = None
-
-def rand_joke():
-    global last_joke
-    with open("jokes.json", "r", encoding="utf-8") as f:
-        jokes = json.load(f)
-    
-    if len(jokes) == 1:
-        return jokes[0]  # only one joke, no choice
-    
-    # Keep picking until it’s different from last_joke
-    joke = random.choice(jokes)
-    while joke == last_joke:
-        joke = random.choice(jokes)
-    
-    last_joke = joke
-    return joke
-
 user_info = get_user_info()
 
-st.markdown(
-    """
-    <style>
-        .block-container {
-            max-width: 1600px;
-            padding-left: 0rem;
-            padding-right: 0rem;
-            margin: auto;
-        }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-st.markdown(
-    """
-    <style>
-        .stContainer {
-            background-color: rgba(13,17,23,0.85);
-            border-radius: 12px;
-            padding: 1.5rem;
-        }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
+st.markdown("""
+<style>
+.block-container { max-width: 1600px; padding-left: 0rem; padding-right: 0rem; margin: auto; }
+.stContainer { background-color: rgba(13,17,23,0.85); border-radius: 12px; padding: 1.5rem; }
+</style>
+""", unsafe_allow_html=True)
 
-# Generate cache-busting timestamp
 cache_bust = int(time.time())
 
 main, profile = st.columns(spec=[0.75, 0.25], border=True)
 
 with profile:
-    # Add cache-bust to avatar URL
     avatar_url = user_info["avatar_url"] + f"?v={cache_bust}"
     st.image(circle_crop_from_url(avatar_url))
-    joke_placeholder = st.empty()
 
-    st.markdown("## **" + user_info["name"] + "**")
-    st.markdown("### **" + username + " · he/him**")
+    # Embed jokes.html as a small caption-like iframe
+    with open("jokes.html", "r", encoding="utf-8") as f:
+        html_code = f.read()
+
+    components.html(html_code, height=30, scrolling=False)
+
+    st.markdown(f"## **{user_info['name']}**")
+    st.markdown(f"### **{username} · he/him**")
     st.text(user_info["bio"])
-
     st.divider()
 
-    st.markdown(
-        ":green-badge[:material/check: Profecient] :orange-badge[:material/warning: Learning] :red-badge[:material/error: Unknown]"
-    )
-    
-    st.markdown(
-        ":green-badge[:material/check: Python] "
-        ":green-badge[:material/check: GDscript] "
-        ":orange-badge[:material/warning: JS] "
-        ":orange-badge[:material/warning: HTML] "
-        ":red-badge[:material/error: Java]"
-    )
-
-    count = st_autorefresh(interval=10000, limit=None, key="joke_refresh")
-
-    joke_placeholder.caption(rand_joke())
-
+    st.markdown(":green-badge[:material/check: Profecient] :orange-badge[:material/warning: Learning] :red-badge[:material/error: Unknown]")
+    st.markdown(":green-badge[:material/check: Python] :green-badge[:material/check: GDscript] :orange-badge[:material/warning: JS] :orange-badge[:material/warning: HTML] :red-badge[:material/error: Java]")
 theme = "streamlit"
 
 with main:
@@ -139,14 +83,11 @@ with main:
 
     st.divider()
 
-    # Add cache-bust to all dynamic images
     st.image(f"https://komarev.com/ghpvc/?username={username}&v={cache_bust}")
     st.image("https://hit.yhype.me/github/profile?account_id=162380893")
-    
     st.image(f"https://raw.githubusercontent.com/{username}/{username}/refs/heads/output/snake-dark.svg?v={cache_bust}")
 
     L, R = st.columns([0.4, 0.6])
-    
     with L:
         st.image(f"https://github-readme-stats-1tsnakers.vercel.app/api/?username={username}&layout=compact&theme={theme}&show_icons=true&v={cache_bust}")
         st.image(f"https://github-readme-streak-stats-1tsnakers.vercel.app/?user={username}&theme={theme}&v={cache_bust}")
