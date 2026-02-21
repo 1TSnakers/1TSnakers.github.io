@@ -10,23 +10,22 @@
 </head>
 <body>
   <div id="joke">Loading joke...</div>
-  <script>
+  <script type="module">
+    import { jokes } from "./jokes.js";
     let lastJoke = "";
 
-    async function updateJoke() {
-      const res = await fetch("https://1tsnakers.github.io/jokes.json");
-      const jokes = await res.json();
-
+    function updateJoke() {
       let joke = jokes[Math.floor(Math.random() * jokes.length)];
       while (joke === lastJoke && jokes.length > 1) {
         joke = jokes[Math.floor(Math.random() * jokes.length)];
       }
+
       lastJoke = joke;
       document.getElementById("joke").textContent = joke;
     }
 
-    updateJoke();            // initial joke
-    setInterval(updateJoke, 10000); // rotate every 10 seconds
+    updateJoke();
+    setInterval(updateJoke, 10000);
   </script>
 </body>
 </html>

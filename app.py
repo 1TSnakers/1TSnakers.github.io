@@ -4,6 +4,7 @@ from PIL import Image, ImageDraw
 import requests
 from io import BytesIO
 import time
+import random
 
 st.set_page_config(
     page_title="1TSnakers Website!",
@@ -70,8 +71,22 @@ with profile:
     st.text(user_info["bio"])
     st.divider()
 
-    st.markdown(":green-badge[:material/check: Profecient] :orange-badge[:material/warning: Learning] :red-badge[:material/error: Unknown]")
-    st.markdown(":green-badge[:material/check: Python] :green-badge[:material/check: GDscript] :orange-badge[:material/warning: JS] :orange-badge[:material/warning: HTML] :red-badge[:material/error: Java]")
+    rand_skill_header = random.choice(["Tech I Actually Use:", "What I Build With:", "Weapons of Choice:", "Current Loadout:"])
+
+    st.subheader(rand_skill_header)
+
+    skill_levels = {
+        "Python": 0.9,
+        "GDScript": 0.85,
+        "JavaScript": 0.4,
+        "HTML/CSS": 0.3,
+        "Java": 0.1,
+    }
+
+    for skill, level in skill_levels.items():
+        st.markdown(f"**{skill}**")
+        st.progress(level)
+
 theme = "streamlit"
 
 with main:
