@@ -14,3 +14,5 @@ pages = {
 pg = st.navigation(pages)
 
 pg.run()
+
+st.sidebar.write(f"Streamlit version: {st.__version__}")
