@@ -20,11 +20,20 @@
     
       mount(
         {
-          requirements: ["requests", "streamlit-autorefresh"],
+          requirements: ["requests", "humanize"],
           entrypoint: "app.py",
           files: {
             "app.py": {
               url: "./app.py"
+            },
+            "homepage.py": {
+              url: "./homepage.py"
+            },
+            "pages/misc_apps.py": {
+              url: "pages/misc_apps.py"
+            },
+            "pages/ollama_models.py": {
+              url: "pages/ollama_models.py"
             },
             "eyy.jpg": {
               url: "./eyy.jpg"
