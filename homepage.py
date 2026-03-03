@@ -110,6 +110,9 @@ with main:
     st.divider()
     st.header("Cool things I made:")
 
+    hall_of_fame_page = st.Page("pages/commit_hall_of_fame.py")
+    st.page_link(hall_of_fame_page, label="Commit Message Hall of Fame", icon="🏆")
+
     pin_columns = st.columns(3)
     pinned = ["ProgressiveImageLoader", "ollama-for-godot", "1TSnakers.github.io"]
     for repo in range(len(pinned)):
