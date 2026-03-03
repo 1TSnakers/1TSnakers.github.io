@@ -6,12 +6,9 @@ from io import BytesIO
 import time
 import random
 
-st.set_page_config(
-    page_title="1TSnakers Website!",
-    layout="wide"
-)
-
+st.set_page_config(page_title="1TSnakers Website!", layout="wide")
 username = "1TSnakers"
+
 
 def circle_crop_from_url(url, antialias=True):
     resp = requests.get(url, timeout=10)
@@ -39,15 +36,17 @@ def circle_crop_from_url(url, antialias=True):
     img.putalpha(mask)
     return img
 
+
 def get_user_info():
     r = requests.get(f"https://api.github.com/users/{username}")
     return r.json()
+
 
 user_info = get_user_info()
 
 st.markdown("""
 <style>
-.block-container { max-width: 1600px; padding-left: 0rem; padding-right: 0rem; margin: auto; }
+.block-container { max-width: 1600px; padding-left: 2rem; padding-right: 2rem; margin: auto; }
 .stContainer { background-color: rgba(13,17,23,0.85); border-radius: 12px; padding: 1.5rem; }
 </style>
 """, unsafe_allow_html=True)
@@ -60,7 +59,6 @@ with profile:
     avatar_url = user_info["avatar_url"] + f"?v={cache_bust}"
     st.image(circle_crop_from_url(avatar_url))
 
-    # Embed jokes.html as a small caption-like iframe
     with open("jokes.html", "r", encoding="utf-8") as f:
         html_code = f.read()
 
@@ -72,7 +70,6 @@ with profile:
     st.divider()
 
     rand_skill_header = random.choice(["Tech I Actually Use:", "What I Build With:", "Weapons of Choice:", "Current Loadout:"])
-
     st.subheader(rand_skill_header)
 
     skill_levels = {
@@ -86,6 +83,7 @@ with profile:
     for skill, level in skill_levels.items():
         st.markdown(f"**{skill}**")
         st.progress(level)
+
 
 theme = "streamlit"
 

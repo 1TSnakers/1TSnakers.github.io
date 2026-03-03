@@ -1,5 +1,5 @@
 export const jokes = [
-  "My code has two modes: \"it works\" and \"I have no idea what's happening.\"",
+  "My code has two modes: \"it works\" or \"I have no idea what's happening.\"",
   "VS Code: 47 extensions. Productivity: questionable.",
   "\"Just one more semicolon,\" I said at 2am.",
   "I don't always write tests, but when I do, I forget to run them.",
@@ -29,4 +29,4 @@ export const jokes = [
   "I fixed the bug. Three new ones have applied for residency.",
   "I said I'd document it later. Later has filed a restraining order.",
   "My code doesn't crash. It aggressively negotiates with reality."
-]
+];

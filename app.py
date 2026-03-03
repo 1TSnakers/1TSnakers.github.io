@@ -10,9 +10,7 @@ pages = {
     ]
 }
 
-# Sidebar navigation - ollama page hidden from sidebar but still accessible
 pg = st.navigation(pages)
-
 pg.run()
 
 st.sidebar.write(f"Streamlit version: {st.__version__}")

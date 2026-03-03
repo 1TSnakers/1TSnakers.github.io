@@ -1,58 +1,35 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <title>1TSnakers Website!</title>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@stlite/browser/build/stlite.css"
-    />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module">
-      import { mount } from "https://cdn.jsdelivr.net/npm/@stlite/browser/build/stlite.js";
-    
-      mount(
-        {
-          pyodideUrl: "https://cdn.jsdelivr.net/pyodide/v0.29.3/full/pyodide.mjs",
-          requirements: ["requests", "humanize"],
-          entrypoint: "app.py",
-          files: {
-            "app.py": {
-              url: "./app.py"
-            },
-            "homepage.py": {
-              url: "./homepage.py"
-            },
-            "pages/misc_apps.py": {
-              url: "pages/misc_apps.py"
-            },
-            "pages/ollama_models.py": {
-              url: "pages/ollama_models.py"
-            },
-            "eyy.jpg": {
-              url: "./eyy.jpg"
-            },
-            "jokes.json": {
-              url: "./jokes.json"
-            },
-            "jokes.html": {
-              url: "./jokes.html"
-            },
-          },
-          streamlitConfig: {
-            "theme.base": "dark"
-          }
-        },
-        document.getElementById("root")
-      );
-    </script>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <title>1TSnakers Website!</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@stlite/browser/build/stlite.css" />
+</head>
+<body>
+  <div id="root"></div>
+  <script type="module">
+    import { mount } from "https://cdn.jsdelivr.net/npm/@stlite/browser/build/stlite.js";
 
-  </body>
+    mount(
+      {
+        pyodideUrl: "https://cdn.jsdelivr.net/pyodide/v0.29.3/full/pyodide.mjs",
+        requirements: ["requests", "humanize"],
+        entrypoint: "app.py",
+        files: {
+          "app.py": { url: "./app.py" },
+          "homepage.py": { url: "./homepage.py" },
+          "pages/misc_apps.py": { url: "pages/misc_apps.py" },
+          "pages/ollama_models.py": { url: "pages/ollama_models.py" },
+          "eyy.jpg": { url: "./eyy.jpg" },
+          "jokes.json": { url: "./jokes.json" },
+          "jokes.html": { url: "./jokes.html" },
+        },
+        streamlitConfig: { "theme.base": "dark" }
+      },
+      document.getElementById("root")
+    );
+  </script>
+</body>
 </html>

@@ -19,7 +19,6 @@
       while (joke === lastJoke && jokes.length > 1) {
         joke = jokes[Math.floor(Math.random() * jokes.length)];
       }
-
       lastJoke = joke;
       document.getElementById("joke").textContent = joke;
     }
