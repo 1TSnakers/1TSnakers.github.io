@@ -23,7 +23,6 @@ HOST = "https://ollama-search-api.vercel.app"
 def is_api_up():
     try:
         r = requests.get(f"{HOST}/ping")
-        st.write(f"Error: {r.status_code}")
         return r.status_code == 200
     except Exception as e:
         st.write(e)
