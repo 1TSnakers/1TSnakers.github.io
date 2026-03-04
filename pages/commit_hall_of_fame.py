@@ -28,7 +28,8 @@ remove whitespace and make it not atrocious to look at without a giant monitor
 make language proficiency better
 forgot, coded from my phone
 gotta fix before deploy
-how tf did this get in?""", language=None)
+how tf did this get in?
+-_-""", language=None)
 
 with col2:
     st.header("1TSnakers/OllamaSearchAPI")

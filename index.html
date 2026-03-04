@@ -5,16 +5,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <title>1TSnakers Website!</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@stlite/browser/build/stlite.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@stlite/browser@latest/build/stlite.css" />
 </head>
 <body>
   <div id="root"></div>
   <script type="module">
-    import { mount } from "https://cdn.jsdelivr.net/npm/@stlite/browser/build/stlite.js";
+    import { mount } from "https://cdn.jsdelivr.net/npm/@stlite/browser@latest/build/stlite.js";
 
     mount(
       {
-        pyodideUrl: "https://cdn.jsdelivr.net/pyodide/v0.29.3/full/pyodide.mjs",
+        //pyodideUrl: "https://cdn.jsdelivr.net/pyodide/v0.29.3/full/pyodide.mjs",
         requirements: ["requests", "humanize"],
         entrypoint: "app.py",
         files: {
@@ -24,7 +24,6 @@
           "pages/ollama_models.py": { url: "pages/ollama_models.py" },
           "pages/commit_hall_of_fame.py": { url: "pages/commit_hall_of_fame.py" },
           "eyy.jpg": { url: "./eyy.jpg" },
-          "jokes.json": { url: "./jokes.json" },
           "jokes.html": { url: "./jokes.html" },
         },
         streamlitConfig: { "theme.base": "dark" }
