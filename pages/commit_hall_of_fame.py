@@ -25,7 +25,10 @@ its not needed
 forgot this is here :/
 remove whitespace and make it not atrocious to look at without a giant monitor
 (and fix buggy joke code)
-make language proficiency better""", language=None)
+make language proficiency better
+forgot, coded from my phone
+gotta fix before deploy
+how tf did this get in?""", language=None)
 
 with col2:
     st.header("1TSnakers/OllamaSearchAPI")
