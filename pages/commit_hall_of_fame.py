@@ -47,4 +47,4 @@ make image scaling good
 st.markdown("---")
 
 st.header("🏅 Best in Show")
-st.info("**\"i have no idea what i am doing\"** — 1TSnakers/OllamaSearchAPI\n\n*Timeless. Relatable. Pure catharsis.*")
+st.info("**\"gotta fix before deploy\"** — 1TSnakers/1TSnakers.github.io\n\n*The universal mantra of every developer who's ever pushed to production at 11:59pm.*")
