@@ -51,7 +51,7 @@ export const jokes = [
   "Backups? What backups?",
   "My GitHub profile is just a graveyard of 'initial commit'.",
   "Console warnings? That's just the browser being dramatic.",
-  "I wrote clean code once. The IDE got confused and flagged it as suspicious.",
+  "I wrote clean code once. The IDE got confused and flagged it as suspicious. Never again.",
   "Auto-save: the reason I never learn to save manually.",
   "I showed my code to a senior dev. They just nodded slowly.",
   "The bug was between the keyboard and chair all along.",

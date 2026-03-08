@@ -31,6 +31,11 @@ gotta fix before deploy
 how tf did this get in?
 -_-""", language=None)
 
+    st.header("1TSnakers/ProgressiveImageLoader")
+    st.code("""i mess things up :'(
+make image scaling good
+""", language=None)
+
 with col2:
     st.header("1TSnakers/OllamaSearchAPI")
     st.code("""f*** this s***
@@ -39,12 +44,17 @@ i have no idea what i am doing
 cors s***
 i test in production""", language=None)
 
-    st.header("1TSnakers/ProgressiveImageLoader")
-    st.code("""i mess things up :'(
-make image scaling good
+    st.header("1TSnakers/minimax-distillation-project")
+    st.code("""add readme and half done teacher dataset
+the teacher dataset is unfinished, dont use it in production, or in anything right now for that matter
+i have fundamentally misunderstood how git works.
+zipped files shouldnt be tracked, what is there to track anyway?
+wrong thing copied :(
+renamed all of the files to not start with minimax-distillation-project
+the main things im using for this, dont worry, this will be added to :)
 """, language=None)
 
 st.markdown("---")
 
 st.header("🏅 Best in Show")
-st.info("**\"gotta fix before deploy\"** — 1TSnakers/1TSnakers.github.io\n\n*The universal mantra of every developer who's ever pushed to production at 11:59pm.*")
+st.info("**\"i have fundamentally misunderstood how git works\"** — 1TSnakers/minimax-distillation-project\n\n*Everyone's first confusion with git branches, manifested.*")
