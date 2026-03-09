@@ -114,7 +114,7 @@ with main:
     st.page_link(hall_of_fame_page, label="Commit Message Hall of Fame", icon="🏆")
 
     pin_columns = st.columns(3)
-    pinned = ["ProgressiveImageLoader", "ollama-for-godot", "1TSnakers.github.io"]
+    pinned = ["minimax-distillation-project","ProgressiveImageLoader", "ollama-for-godot", "1TSnakers.github.io"]
     for repo in range(len(pinned)):
         with pin_columns[repo % 3]:
             st.image(f"https://github-readme-stats-1tsnakers.vercel.app/api/pin/?username={username}&repo={pinned[repo]}&theme={theme}&v={cache_bust}", width=int(1130/3))
