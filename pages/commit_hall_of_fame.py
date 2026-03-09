@@ -30,7 +30,8 @@ forgot, coded from my phone
 gotta fix before deploy
 how tf did this get in?
 -_-
-make refreshing not weird""", language=None)
+make refreshing not weird
+make github stat image layouts not look like s***""", language=None)
 
     st.header("1TSnakers/ProgressiveImageLoader")
     st.code("""i mess things up :'(

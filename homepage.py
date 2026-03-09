@@ -100,12 +100,10 @@ with main:
     st.image("https://hit.yhype.me/github/profile?account_id=162380893")
     st.image(f"https://raw.githubusercontent.com/{username}/{username}/refs/heads/output/snake-dark.svg?v={cache_bust}")
 
-    L, R = st.columns([0.4, 0.6])
-    with L:
+    with st.container(horizontal=True):
         st.image(f"https://github-readme-stats-1tsnakers.vercel.app/api/?username={username}&layout=compact&theme={theme}&show_icons=true&v={cache_bust}")
-        st.image(f"https://github-readme-streak-stats-1tsnakers.vercel.app/?user={username}&theme={theme}&v={cache_bust}")
-    with R:
         st.image(f"https://github-readme-stats-1tsnakers.vercel.app/api/top-langs/?username={username}&layout=compact&theme={theme}&v={cache_bust}")
+        st.image(f"https://github-readme-streak-stats-1tsnakers.vercel.app/?user={username}&theme={theme}&v={cache_bust}")
 
     st.divider()
     st.header("Cool things I made:")
