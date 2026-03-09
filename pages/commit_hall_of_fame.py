@@ -29,7 +29,8 @@ make language proficiency better
 forgot, coded from my phone
 gotta fix before deploy
 how tf did this get in?
--_-""", language=None)
+-_-
+make refreshing not weird""", language=None)
 
     st.header("1TSnakers/ProgressiveImageLoader")
     st.code("""i mess things up :'(
