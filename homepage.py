@@ -62,7 +62,9 @@ with profile:
     with open("jokes.html", "r", encoding="utf-8") as f:
         html_code = f.read()
 
-    components.html(html_code, height=30, scrolling=False)
+    components.html(html_code, height=40, scrolling=False)
+
+    st.divider()
 
     st.markdown(f"## **{user_info['name']}**")
     st.markdown(f"### **{username} · he/him**")
