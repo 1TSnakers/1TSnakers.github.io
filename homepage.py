@@ -9,7 +9,7 @@ import random
 st.set_page_config(page_title="1TSnakers Website!", layout="wide")
 username = "1TSnakers"
 
-
+@st.cache_data
 def circle_crop_from_url(url, antialias=True):
     resp = requests.get(url, timeout=10)
     resp.raise_for_status()
@@ -36,10 +36,26 @@ def circle_crop_from_url(url, antialias=True):
     img.putalpha(mask)
     return img
 
-
+@st.cache_data
 def get_user_info():
     r = requests.get(f"https://api.github.com/users/{username}")
     return r.json()
+
+@st.cache_data
+def get_lang_info():
+    r = requests.get(f"https://github-languages-api.vercel.app/languages/{username}")
+    r = r.json()
+    result = {}
+
+    for lang in r["languages"]:
+        result[lang["language"]] = lang["percentage"] / 100
+    return result
+
+
+def get_language_colors():
+    url = "https://raw.githubusercontent.com/anuraghazra/github-readme-stats/refs/heads/master/src/common/languageColors.json"
+    return requests.get(url).json()
+
 
 
 user_info = get_user_info()
@@ -74,17 +90,20 @@ with profile:
     rand_skill_header = random.choice(["Tech I Actually Use:", "What I Build With:", "Weapons of Choice:", "Current Loadout:"])
     st.subheader(rand_skill_header)
 
-    skill_levels = {
-        "Python": 0.9,
-        "GDScript": 0.85,
-        "JavaScript": 0.4,
-        "HTML/CSS": 0.3,
-        "Java": 0.1,
-    }
+    language_colors = get_language_colors()
 
-    for skill, level in skill_levels.items():
-        st.markdown(f"**{skill}**")
-        st.progress(level)
+    skills = dict(get_lang_info())
+    skills["Java"] = 0.0
+
+    for skill, level in skills.items():
+        color = language_colors.get(skill, "#888888")
+        label = f"**{skill}:** {int(level*100)}%" if level > 0 else f"**{skill}:** 0% (thankfully)"
+        st.markdown(label)
+        st.markdown(f"""
+            <div style="background-color: #333; border-radius: 4px; height: 8px; width: 100%; margin-bottom: 16px;">
+                <div style="background-color: {color}; width: {int(level*100)}%; height: 8px; border-radius: 4px;"></div>
+            </div>
+        """, unsafe_allow_html=True)
 
 
 theme = "streamlit"
@@ -104,7 +123,7 @@ with main:
 
     with st.container(horizontal=True):
         st.image(f"https://github-readme-stats-1tsnakers.vercel.app/api/?username={username}&layout=compact&theme={theme}&show_icons=true&v={cache_bust}")
-        st.image(f"https://github-readme-stats-1tsnakers.vercel.app/api/top-langs/?username={username}&layout=compact&theme={theme}&v={cache_bust}")
+        st.image(f"https://github-readme-stats-1tsnakers.vercel.app/api/top-langs/?username={username}&layout=donut&theme={theme}&v={cache_bust}")
         st.image(f"https://github-readme-streak-stats-1tsnakers.vercel.app/?user={username}&theme={theme}&v={cache_bust}")
 
     st.divider()
