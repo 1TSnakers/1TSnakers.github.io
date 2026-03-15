@@ -1,6 +1,4 @@
 import streamlit as st
-import requests
-import humanize
 from datetime import datetime
 
 pages = {
