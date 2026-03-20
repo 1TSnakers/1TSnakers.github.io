@@ -19,3 +19,5 @@ st.markdown("""
 """)
 
 st.page_link(ollama_page, label="List Ollama model info", icon="🤖")
+
+st.page_link("https://1tsnakers.github.io/godot-games/slice", label="A game I made inspiered by flatland")
