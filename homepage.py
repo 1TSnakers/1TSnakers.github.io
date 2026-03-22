@@ -6,7 +6,11 @@ from io import BytesIO
 import time
 import random
 
-st.set_page_config(page_title="1TSnakers Website!", layout="wide")
+st.set_page_config(
+    page_title="1TSnakers Website!",
+    layout="wide"
+)
+
 username = "1TSnakers"
 
 @st.cache_data
@@ -73,7 +77,8 @@ main, profile = st.columns(spec=[0.75, 0.25], border=True)
 
 with profile:
     avatar_url = user_info["avatar_url"] + f"?v={cache_bust}"
-    st.image(circle_crop_from_url(avatar_url))
+    avatar = circle_crop_from_url(avatar_url)
+    st.image(avatar)
 
     with open("jokes.html", "r", encoding="utf-8") as f:
         html_code = f.read()
@@ -133,7 +138,7 @@ with main:
     st.page_link(hall_of_fame_page, label="Commit Message Hall of Fame", icon="🏆")
 
     pin_columns = st.columns(3)
-    pinned = ["minimax-distillation-project","ProgressiveImageLoader", "ollama-for-godot", "1TSnakers.github.io"]
+    pinned = ["minimax-distillation-project","ProgressiveImageLoader", "ollama-for-godot", "1TSnakers.github.io", "godot-games"]
     for repo in range(len(pinned)):
         with pin_columns[repo % 3]:
             st.image(f"https://github-readme-stats-1tsnakers.vercel.app/api/pin/?username={username}&repo={pinned[repo]}&theme={theme}&v={cache_bust}", width=int(1130/3))
