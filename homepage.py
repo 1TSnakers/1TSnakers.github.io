@@ -121,6 +121,20 @@ with main:
         st.image("eyy.jpg", width=350)
 
     st.divider()
+    
+    st.markdown("### 🚀 Artemis 2 Launch Countdown")
+    components.html(f"""
+    <iframe
+        src="https://www.tickcounter.com/countdown/9886762/artemis-ii-launch"
+        width="100%"
+        height="245"
+        frameborder="0"
+        allowfullscreen
+    >
+    </iframe>
+    """, height=200, scrolling=False)
+    st.caption("First crewed mission around the Moon since 1972 🌙")
+    st.divider()
 
     st.image(f"https://komarev.com/ghpvc/?username={username}&v={cache_bust}")
     st.image("https://hit.yhype.me/github/profile?account_id=162380893")
