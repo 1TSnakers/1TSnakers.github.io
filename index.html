@@ -26,7 +26,23 @@
           "eyy.jpg": { url: "./eyy.jpg" },
           "jokes.html": { url: "./jokes.html" },
         },
-        streamlitConfig: { "theme.base": "dark" }
+        streamlitConfig: {
+          "server.enableStaticServing": true,
+          
+          "theme.base": "dark",
+          "theme.primaryColor": "#a855f7",
+          "theme.backgroundColor": "#0d1117",
+          "theme.secondaryBackgroundColor": "#161b22",
+          "theme.textColor": "#f0f6fc",
+          "theme.linkColor": "#58a6ff",
+          
+          // Border and styling
+          "theme.borderColor": "#30363d",
+          "theme.baseRadius": "0.375rem",
+          
+          // Code styling
+          "theme.codeBackgroundColor": "#21262d"
+        }
       },
       document.getElementById("root")
     );
