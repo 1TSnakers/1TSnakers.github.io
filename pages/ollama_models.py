@@ -56,10 +56,8 @@ if st.button("Make list"):
 
         total_time = time.time() - start_time
         total_time = round(total_time, 3)
-        cache_time = datetime.fromisoformat(r.json()["cache_expires_at"]) - datetime.now().astimezone()
 
         st.write(f"{len(models)} models counted in {total_time} seconds")
-        st.write(f"Cache expires in {humanize.naturaldelta(cache_time)}")
 
         df = pd.DataFrame({
             "model": models,
