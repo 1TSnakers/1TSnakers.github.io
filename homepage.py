@@ -1,10 +1,11 @@
 import streamlit as st
-import streamlit.components.v1 as components
 from PIL import Image, ImageDraw
 import requests
 from io import BytesIO
 import time
 import random
+import sys
+import helpers.cached_platform as platform
 
 st.set_page_config(
     page_title="1TSnakers Website!",
@@ -61,7 +62,6 @@ def get_language_colors():
     return requests.get(url).json()
 
 
-
 user_info = get_user_info()
 
 st.markdown("""
@@ -80,10 +80,7 @@ with profile:
     avatar = circle_crop_from_url(avatar_url)
     st.image(avatar)
 
-    with open("jokes.html", "r", encoding="utf-8") as f:
-        html_code = f.read()
-
-    components.html(html_code, height=40, scrolling=False)
+    st.iframe("jokes.html", height=40)
 
     st.divider()
 
@@ -110,6 +107,28 @@ with profile:
             </div>
         """, unsafe_allow_html=True)
 
+    st.divider()
+    st.subheader("Hardware for medium ballers:")
+
+    # Operating System details
+    st.text(f"OS Type:         {platform.system()}")
+    st.text(f"OS Release:      {platform.release()}")
+    st.text(f"OS Version:      {platform.version()}")
+
+    # Hardware Architecture details
+    st.text(f"Architecture:    {platform.machine()}")
+    st.text(f"Processor Raw:   {platform.processor()}")
+
+    # Python Environment details
+    st.text(f"Python Version:  {platform.python_version()}")
+    st.text(f"Python Compiler: {platform.python_compiler()}")
+    st.text(f"Python Build:    {platform.python_build()[0]} ({platform.python_build()[1]})")
+
+    # Exact Platform String (Useful for configuration logs)
+    st.text(f"Platform ID:     {platform.platform()}")
+
+    # Memory Word Size (Checks if Python run-time is 32-bit or 64-bit)
+    st.text(f"Pointer Size:    {platform.architecture()[0]}")
 
 theme = "streamlit"
 
