@@ -32,7 +32,9 @@ how tf did this get in?
 -_-
 make refreshing not weird
 make github stat image layouts not look like s***
-this formating is for a joke""", language=None)
+this formating is for a joke
+nah im too lazy to do this
+w commit""", language=None)
 
     st.header("1TSnakers/ProgressiveImageLoader")
     st.code("""i mess things up :'(
