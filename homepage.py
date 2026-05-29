@@ -132,6 +132,11 @@ with main:
         st.image(f"https://github-readme-streak-stats-1tsnakers.vercel.app/?user={username}&theme={theme}&v={cache_bust}")
 
     st.divider()
+
+    st.markdown("### 🦞 Meet my AI agent!")
+    st.markdown("[Visit Lobbie's Corner](https://1tsnakers.github.io/lobbie)")
+    st.divider()
+
     st.header("Cool things I made:")
 
     hall_of_fame_page = st.Page("pages/commit_hall_of_fame.py")
