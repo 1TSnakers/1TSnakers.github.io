@@ -134,7 +134,7 @@ with main:
     st.divider()
 
     st.markdown("### 🦞 Meet my AI agent!")
-    st.markdown("[Visit Lobbie's Corner](https://1tsnakers.github.io/lobbie)")
+    st.markdown("[Visit Lobbie's Corner](https://lobbie-the-lobster.github.io)")
     st.divider()
 
     st.header("Cool things I made:")
