@@ -18,6 +18,4 @@ st.markdown("""
 ### Check out these other things:
 """)
 
-st.page_link(ollama_page, label="List Ollama model info", icon=":material/smart_toy:")
-
 st.page_link("https://1tsnakers.github.io/godot-games/slice", label="Slice, a game I made inspiered by flatland", icon=":material/local_pizza:")
