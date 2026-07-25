@@ -127,8 +127,8 @@ with main:
     st.image(f"https://raw.githubusercontent.com/{username}/{username}/refs/heads/output/snake-dark.svg?v={cache_bust}")
 
     with st.container(horizontal=True):
-        st.image(f"https://github-readme-stats-1tsnakers.vercel.app/api/?username={username}&layout=compact&theme={theme}&show_icons=true&v={cache_bust}")
-        st.image(f"https://github-readme-stats-1tsnakers.vercel.app/api/top-langs/?username={username}&layout=donut&theme={theme}&v={cache_bust}")
+        st.image(f"https://github-stats-extended-1tsnakers.vercel.app/api/?username={username}&layout=compact&theme={theme}&show_icons=true&v={cache_bust}")
+        st.image(f"https://github-stats-extended-1tsnakers.vercel.app/api/top-langs/?username={username}&layout=donut&theme={theme}&v={cache_bust}")
         st.image(f"https://github-readme-streak-stats-1tsnakers.vercel.app/?user={username}&theme={theme}&v={cache_bust}")
 
     st.divider()
@@ -146,4 +146,4 @@ with main:
     pinned = ["minimax-distillation-project","ProgressiveImageLoader", "ollama-for-godot", "1TSnakers.github.io", "godot-games"]
     for repo in range(len(pinned)):
         with pin_columns[repo % 3]:
-            st.image(f"https://github-readme-stats-1tsnakers.vercel.app/api/pin/?username={username}&repo={pinned[repo]}&theme={theme}&v={cache_bust}", width=int(1130/3))
+            st.image(f"https://github-stats-extended-1tsnakers.vercel.app/api/pin/?username={username}&repo={pinned[repo]}&theme={theme}&v={cache_bust}", width=int(1130/3))
